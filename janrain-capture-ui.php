@@ -28,7 +28,7 @@ class JanrainCaptureUi {
 					add_filter( 'admin_url', array( $this, 'admin_url' ), 10, 3 );
 				}
 				if ( $this->ui_type == 'Capture' ) {
-					if ( JanrainCapture::get_option( JanrainCapture::$name . '_widget_bp_enabled' ) > 0 ) {
+					if ( JanrainCapture::get_option( JanrainCapture::$name . '_widget_backplane_enabled' ) > 0 ) {
 						add_action( 'wp_enqueue_scripts', array( $this, 'backplane_head' ) );
 						add_action( 'wp_footer', array( $this, 'backplane_js' ) );
 					}
@@ -606,9 +606,9 @@ WIDGETFINISH;
 	 */
 	function backplane_head() {
 		if ( JanrainCapture::get_option( JanrainCapture::$name . '_bp_version', 1.2 ) != 2 ) {
-			wp_register_script( 'backplane', 'http://d134l0cdryxgwa.cloudfront.net/backplane.js' );
+			wp_register_script( 'backplane', '//d134l0cdryxgwa.cloudfront.net/backplane.js' );
 		} else {
-			wp_register_script( 'backplane', 'http://d134l0cdryxgwa.cloudfront.net/backplane2.js' );
+			wp_register_script( 'backplane', '//d134l0cdryxgwa.cloudfront.net/backplane2.js' );
 		}
 		wp_enqueue_script( 'backplane' );
 	}
@@ -617,7 +617,7 @@ WIDGETFINISH;
 	 * Outputs backplane setttings js block
 	 */
 	function backplane_js() {
-		$bus = JanrainCapture::get_option( JanrainCapture::$name . '_bp_bus_name' );
+		$bus = JanrainCapture::get_option( JanrainCapture::$name . '_widget_bp_bus_name' );
 		$ver = JanrainCapture::get_option( JanrainCapture::$name . '_bp_version', 1.2 );
 		if ( $ver == 1.2 ) {
 			echo <<<BACKPLANE2
@@ -630,7 +630,7 @@ function setup_bp() {
 	 */
 	Backplane(bp_ready);
 	Backplane.init({
-		serverBaseURL: "http://backplane1.janrainbackplane.com/v$ver",
+		serverBaseURL: "https://backplane1.janrainbackplane.com/v$ver",
 		busName: "$bus"
 	});
 }
