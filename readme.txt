@@ -1,3 +1,12 @@
+*Please Read*
+The following plugin is a forked copy of the Janrain Capture plugin. This
+contains a few patches to help backplane work correctly on your site. In
+addition, this embraces protocol relative URLs as well as HTTPS by default.
+
+I've reported the issues to Janrain and hopefully will fix the isseus fixed in
+the commits soon.
+
+
 === Janrain Registration ===
 Contributors: byron-janrain, rebekahgolden
 Tags: capture, janrain, sso
